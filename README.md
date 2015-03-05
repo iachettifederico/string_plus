@@ -9,9 +9,10 @@ Some stuff I like on `String`s.
 Convert a space/underscore-separated String into camel case.
 
 ```ruby
-require "string_plus"
-"hello_cool_world".camelcase
-# => "HelloCoolWorld"
+  require "string_plus"
+  
+  "hello_cool_world".camelcase
+  # => "HelloCoolWorld"
 ```
 
 ### `#lcamelcase`
@@ -19,9 +20,10 @@ require "string_plus"
 Convert a space/underscore-separated String into lower camel case.
 
 ```ruby
-require "string_plus"
-"hello_cool_world".lcamelcase
-# => "helloCoolWorld"
+  require "string_plus"
+  
+  "hello_cool_world".lcamelcase
+  # => "helloCoolWorld"
 ```
 
 
@@ -35,11 +37,28 @@ Acknowledgments:
 * You're not creating a Constant, but retrieving it. So, if it doesn't already exist, it will raise an error.
 
 ```ruby
-require "string_plus"
-"basic_object".constantize
-# => BasicObject
+  require "string_plus"
+  
+  "basic_object".constantize
+  # => BasicObject
 ```
 
+It also accepts nested constants, separated by `-`
+
+```ruby
+  require "string_plus"
+  
+  module ExternalModule
+    class InternalClass
+      class InceptionedClass
+        class DreamInsideADreamInsideADream; end
+      end
+    end
+  end
+  
+  "external_module-internal_class-inceptioned_class-dream_inside_a_dream_inside_a_dream".constantize
+  # => ExternalModule::InternalClass::InceptionedClass::DreamInsideADreamInsideADream
+```
 
 ## Installation
 
