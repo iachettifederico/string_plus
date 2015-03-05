@@ -22,7 +22,7 @@ scope String do
       "hello    cool       world".camelcase == "HelloCoolWorld"
     end
 
-    spec "multipe words mmixed spaces and dashes" do
+    spec "multipe words mixed spaces and dashes" do
       "hello_cool       world".camelcase == "HelloCoolWorld"
     end
   end
@@ -73,7 +73,14 @@ scope String do
        @ex.message == "uninitialized constant IDoNotExist"
      end
 
-     
-
+     spec "namespaced constant" do
+       module ExternalModule
+         class InternalClass
+         end
+       end
+       
+       "external_module-internal_class".constantize == ExternalModule::InternalClass
+    end
   end
+
 end

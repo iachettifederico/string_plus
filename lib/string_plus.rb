@@ -21,7 +21,8 @@ module StringPlus
   end
 
   def constantize
-    Object.send(:const_get, self.camelcase)
+    c = self.split("-").map(&:camelcase).join("::")
+    Object.send(:const_get, c)
   end
 end
 
