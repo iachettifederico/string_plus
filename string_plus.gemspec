@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Federico Iachetti"]
   spec.email         = ["iachetti.federico@gmail.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{Some extra methods for strings.}
   spec.description   = %q{Some extra methods for strings.}
   spec.homepage      = "https://github.com/iachettifederico/string_plus"
