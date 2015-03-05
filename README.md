@@ -1,8 +1,45 @@
 # StringPlus
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/string_plus`. To experiment with that code, run `bin/console` for an interactive prompt.
+Some stuff I like on `String`s.
 
-TODO: Delete this and the text above, and describe your gem
+## Methods added
+
+### `#camelcase`
+
+Convert a space/underscore-separated String into camel case.
+
+```ruby
+require "string_plus"
+"hello_cool_world".camelcase
+# => "HelloCoolWorld"
+```
+
+### `#lcamelcase`
+
+Convert a space/underscore-separated String into lower camel case.
+
+```ruby
+require "string_plus"
+"hello_cool_world".lcamelcase
+# => "helloCoolWorld"
+```
+
+
+### `#constantize`
+
+Convert a string into a constant.
+
+Acknowledgments:
+
+* The `String` will be first camel-cased.
+* You're not creating a Constant, but retrieving it. So, if it doesn't already exist, it will raise an error.
+
+```ruby
+require "string_plus"
+"basic_object".constantize
+# => BasicObject
+```
+
 
 ## Installation
 
@@ -19,10 +56,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install string_plus
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
