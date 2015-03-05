@@ -61,26 +61,34 @@ scope String do
       "symbol".constantize == Symbol
     end
 
-     spec "multiple words" do
+    spec "multiple words" do
       "basic_object".constantize == BasicObject
-     end
+    end
 
-     spec "non-existent constant" do
-       @ex = capture_exception(NameError) do
-         "IDoNotExist".constantize
-       end
+    spec "non-existent constant" do
+      @ex = capture_exception(NameError) do
+        "IDoNotExist".constantize
+      end
 
-       @ex.message == "uninitialized constant IDoNotExist"
-     end
+      @ex.message == "uninitialized constant IDoNotExist"
+    end
 
-     spec "namespaced constant" do
-       module ExternalModule
-         class InternalClass
-         end
-       end
-       
-       "external_module-internal_class".constantize == ExternalModule::InternalClass
+    scope "namespaced constant" do
+      module ExternalModule
+        class InternalClass
+          class InceptionedClass
+            class DreamInsideADreamInsideADream; end
+          end
+        end
+      end
+
+      spec "one level" do
+        "external_module-internal_class".constantize == ExternalModule::InternalClass
+      end
+
+      spec "multiple levels" do
+        "external_module-internal_class-inceptioned_class-dream_inside_a_dream_inside_a_dream".constantize == ExternalModule::InternalClass::InceptionedClass::DreamInsideADreamInsideADream
+      end
     end
   end
-
 end
