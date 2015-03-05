@@ -5,7 +5,7 @@ module StringPlus
     res = ""
     flag = capitalize_first_char
     self.each_char {|w|
-      (flag = true ; next) if w == "_"
+      (flag = true ; next) if w == "_" || w == " "
       res << if flag
                flag = false
                w.upcase
@@ -16,9 +16,10 @@ module StringPlus
     res
   end
 
-  def snakecase
+  def lcamelcase
     camelcase(false)
   end
+
 end
 
 String.send(:include, StringPlus)
