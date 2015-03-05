@@ -20,6 +20,9 @@ module StringPlus
     camelcase(false)
   end
 
+  def constantize
+    Object.send(:const_get, self.camelcase)
+  end
 end
 
 String.send(:include, StringPlus)
