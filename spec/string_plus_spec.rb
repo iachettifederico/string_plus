@@ -96,15 +96,28 @@ scope String do
     spec "one word" do
       "Hello".underscore == "hello"
     end
-
+  
     spec "multipe words" do
       "HelloCoolWorld".underscore == "hello_cool_world"
+    end
+
+       spec "words with numbers" do
+         "Hel1oW0rld".underscore == "hel1o_w0rld"
     end
 
     spec "multipe words multiple underscored" do
       "HelloCoolWorldI".underscore == "hello_cool_world_i"
     end
 
+    spec "spaces" do
+      "Hello world".underscore == "hello_world"
+    end
+
+    spec "all caps" do
+      "HELLO".underscore == "hello"
+    end
+
+    
     spec "snakecase" do
       "HelloCoolWorldI".snakecase == "hello_cool_world_i"
     end

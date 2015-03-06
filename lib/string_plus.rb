@@ -21,10 +21,11 @@ module StringPlus
   end
 
   def underscore
+    return self.downcase if self.each_char.all? { |c| c == c.upcase && c =~ /[a-zA-Z0-9]/}
     res = ""
     [nil, *self.each_char].each_cons(2) do |last, current|
-      res << "_" if current == current.upcase && last != nil
-      res << current.downcase
+      res << "_" if last !=nil && current == current.upcase && !("0".."9").include?(current) 
+      res << current.downcase unless current == " "
     end
     res
   end
