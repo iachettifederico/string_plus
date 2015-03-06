@@ -20,6 +20,15 @@ module StringPlus
     camelcase(false)
   end
 
+  def underscore
+    res = ""
+    [nil, *self.each_char].each_cons(2) do |last, current|
+      res << "_" if current == current.upcase && last != nil
+      res << current.downcase
+    end
+    res
+  end
+  
   def constantize
     c = self.split("-").map(&:camelcase).join("::")
     Object.send(:const_get, c)

@@ -91,4 +91,18 @@ scope String do
       end
     end
   end
+
+  scope "#underscore" do
+    spec "one word" do
+      "Hello".underscore == "hello"
+    end
+
+    spec "multipe words" do
+      "HelloCoolWorld".underscore == "hello_cool_world"
+    end
+
+    spec "multipe words multiple underscored" do
+      "HelloCoolWorldI".underscore == "hello_cool_world_i"
+    end
+  end
 end
