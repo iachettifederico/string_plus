@@ -104,5 +104,10 @@ scope String do
     spec "multipe words multiple underscored" do
       "HelloCoolWorldI".underscore == "hello_cool_world_i"
     end
+
+    spec "snakecase" do
+      "HelloCoolWorldI".snakecase == "hello_cool_world_i"
+    end
+
   end
 end

@@ -28,6 +28,7 @@ module StringPlus
     end
     res
   end
+  alias :snakecase :underscore
   
   def constantize
     c = self.split("-").map(&:camelcase).join("::")
