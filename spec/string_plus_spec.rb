@@ -1,6 +1,11 @@
 require "spec_helper"
 require "string_plus"
-scope String do
+
+class String
+  include StringPlus
+end
+
+scope do
   scope "#camelcase" do
     spec "one word" do
       "hello".camelcase == "Hello"
@@ -52,6 +57,7 @@ scope String do
       "hello_cool       world".lcamelcase == "helloCoolWorld"
     end
   end
+
   scope "#constantize" do
     spec "capitalized word" do
       "Integer".constantize == Integer
@@ -87,7 +93,9 @@ scope String do
       end
 
       spec "multiple levels" do
-        "external_module-internal_class-inceptioned_class-dream_inside_a_dream_inside_a_dream".constantize == ExternalModule::InternalClass::InceptionedClass::DreamInsideADreamInsideADream
+        string = "external_module-internal_class-inceptioned_class-dream_inside_a_dream_inside_a_dream"
+        constant = ExternalModule::InternalClass::InceptionedClass::DreamInsideADreamInsideADream
+        string.constantize == constant
       end
     end
   end
@@ -117,10 +125,8 @@ scope String do
       "HELLO".underscore == "hello"
     end
 
-    
     spec "snakecase" do
       "HelloCoolWorldI".snakecase == "hello_cool_world_i"
     end
-
   end
 end

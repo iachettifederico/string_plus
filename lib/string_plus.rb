@@ -36,5 +36,3 @@ module StringPlus
     Object.send(:const_get, c)
   end
 end
-
-String.send(:include, StringPlus)
