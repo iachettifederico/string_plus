@@ -1,6 +1,7 @@
 require "string_plus/version"
 
 module StringPlus
+  module_function
   def camelcase(capitalize_first_char=true)
     res = ""
     flag = capitalize_first_char
