@@ -2,10 +2,10 @@ require "string_plus/version"
 
 module StringPlus
   module_function
-  def camelcase(capitalize_first_char=true)
+  def camelcase(str=self, capitalize_first_char=true)
     res = ""
     flag = capitalize_first_char
-    self.each_char {|w|
+    str.each_char {|w|
       (flag = true ; next) if w == "_" || w == " "
       res << if flag
                flag = false
@@ -17,14 +17,14 @@ module StringPlus
     res
   end
 
-  def lcamelcase
+  def lcamelcase(str=self)
     camelcase(false)
   end
 
-  def underscore
-    return self.downcase if self.each_char.all? { |c| c == c.upcase && c =~ /[a-zA-Z0-9]/}
+  def underscore(str=self)
+    return str.downcase if str.each_char.all? { |c| c == c.upcase && c =~ /[a-zA-Z0-9]/}
     res = ""
-    [nil, *self.each_char].each_cons(2) do |last, current|
+    [nil, *str.each_char].each_cons(2) do |last, current|
       res << "_" if last !=nil && current == current.upcase && !("0".."9").include?(current) 
       res << current.downcase unless current == " "
     end
@@ -32,8 +32,8 @@ module StringPlus
   end
   alias :snakecase :underscore
   
-  def constantize
-    c = self.split("-").map(&:camelcase).join("::")
+  def constantize(str=self)
+    c = str.split("-").map(&:camelcase).join("::")
     Object.send(:const_get, c)
   end
 end
