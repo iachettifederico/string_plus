@@ -18,7 +18,7 @@ module StringPlus
   end
 
   def lcamelcase(str=self)
-    camelcase(false)
+    camelcase(str, false)
   end
 
   def underscore(str=self)
@@ -33,7 +33,7 @@ module StringPlus
   alias :snakecase :underscore
   
   def constantize(str=self)
-    c = str.split("-").map(&:camelcase).join("::")
+    c = str.split("-").map {|segment| camelcase(segment)}.join("::")
     Object.send(:const_get, c)
   end
 end
